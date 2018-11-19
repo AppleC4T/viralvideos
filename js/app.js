@@ -39,3 +39,34 @@ function init() {
         console.log("API ready");
     });
 }
+
+sealb = document.getElementById("seals");
+sealb.addEventListener("click", function(){
+	$(function() {
+    $("form").on("submit", function(e) {
+       e.preventDefault();
+       // prepare the request
+       var request = gapi.client.youtube.search.list({
+            part: "snippet",
+            type: "video",
+            q: "seals",
+            maxResults: 3,
+            order: "relevance",
+            publishedAfter: "2007-01-01T00:00:00Z"
+       }); 
+       // execute the request
+       request.execute(function(response) {
+          var results = response.result;
+          $("#results").html("");
+          $.each(results.items, function(index, item) {
+            $.get("tpl/item.html", function(data) {
+                $("#results").append(tplawesome(data, [{"title":item.snippet.title, "videoid":item.id.videoId}]));
+            });
+          });
+          resetVideoHeight();
+       });
+    });
+    
+    $(window).on("resize", resetVideoHeight);
+});
+})
