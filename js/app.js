@@ -49,10 +49,11 @@ sealb.addEventListener("click", function(){
        var request = gapi.client.youtube.search.list({
             part: "snippet",
             type: "video",
-            q: "seals",
-            maxResults: 3,
+            q: "seal",
+            maxResults: 10,
             order: "relevance",
-            publishedAfter: "2007-01-01T00:00:00Z"
+            publishedAfter: "2007-01-01T00:00:00Z",
+		    publishedBefore: "20017-01-01T00:00:00Z"
        }); 
        // execute the request
        request.execute(function(response) {
