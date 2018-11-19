@@ -40,20 +40,18 @@ function init() {
     });
 }
 
-var loadnum = document.getElementById("loadn");
-var loadval = loadnum.value.parseInt();
-
 var sealb = document.getElementById("seals");
-sealb.addEventListener("click", function(){
+sealb.addEventListener("click", function(e){
        e.preventDefault();
        // prepare the request
        var request = gapi.client.youtube.search.list({
             part: "snippet",
             type: "video",
-            q: "seal|seals|seals meme -flex tape|seal music|seal kiss from a rose|flex seal",
-            maxResults: loadval,
+            q: "seal|seals|seal meme|seals meme",
+            maxResults: 5,
             order: "relevance",
             publishedAfter: "2007-01-01T00:00:00Z",
+		    publishedBefore: "2017-01-01T00:00:00Z"
        }); 
        // execute the request
        request.execute(function(response) {
@@ -66,7 +64,6 @@ sealb.addEventListener("click", function(){
           });
           resetVideoHeight();
        });
-	$(window).on("resize", resetVideoHeight);
-
-});
+	    $(window).on("resize", resetVideoHeight);
+    });
     
