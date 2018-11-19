@@ -50,7 +50,7 @@ sealb.addEventListener("click", function(){
        var request = gapi.client.youtube.search.list({
             part: "snippet",
             type: "video",
-            q: "seal|seals|seals meme -flex tape -seal greatest hits -seal music -flex tape -kiss from a rose",
+            q: "seal|seals|seals meme -flex tape|seal music|seal kiss from a rose|flex seal",
             maxResults: loadval,
             order: "relevance",
             publishedAfter: "2007-01-01T00:00:00Z",
