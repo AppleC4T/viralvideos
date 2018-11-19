@@ -8,7 +8,7 @@ $(function() {
             part: "snippet",
             type: "video",
             q: encodeURIComponent($("#search").val()).replace(/%20/g, "+"),
-            maxResults: 3,
+            maxResults: checkload(),
             order: "viewCount",
             publishedAfter: "2007-01-01T00:00:00Z"
        }); 
@@ -40,6 +40,24 @@ function init() {
     });
 }
 
+var loadin = document.getElementById("loadn");
+var loadval = loadin.value.parseInt();
+
+function checkload(){
+	if (loadval <= 0){
+		loadval = 1;
+		return loadval;
+	}
+	if (loadval > 20){
+		loadval = 20;
+		return loadval;
+	}
+	else{
+		loadval = loadval;
+		return loadval;
+	}
+}
+
 var sealb = document.getElementById("seals");
 sealb.addEventListener("click", function(e){
        e.preventDefault();
@@ -48,7 +66,7 @@ sealb.addEventListener("click", function(e){
             part: "snippet",
             type: "video",
             q: "seal|seals|seal meme|seals meme",
-            maxResults: 3,
+            maxResults: checkload(),
             order: "relevance",
             publishedAfter: "2007-01-01T00:00:00Z"
        }); 
