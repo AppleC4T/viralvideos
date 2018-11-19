@@ -48,10 +48,9 @@ sealb.addEventListener("click", function(e){
             part: "snippet",
             type: "video",
             q: "seal|seals|seal meme|seals meme",
-            maxResults: 5,
+            maxResults: 3,
             order: "relevance",
-            publishedAfter: "2007-01-01T00:00:00Z",
-		    publishedBefore: "2017-01-01T00:00:00Z"
+            publishedAfter: "2007-01-01T00:00:00Z"
        }); 
        // execute the request
        request.execute(function(response) {
@@ -64,6 +63,7 @@ sealb.addEventListener("click", function(e){
           });
           resetVideoHeight();
        });
-	    $(window).on("resize", resetVideoHeight);
     });
+    
+    $(window).on("resize", resetVideoHeight);
     
