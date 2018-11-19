@@ -36,5 +36,6 @@ function init() {
     gapi.client.setApiKey("AIzaSyCXDTz6DnO8uj2OPd71Fd3DaWJgGI2IxdI");
     gapi.client.load("youtube", "v3", function() {
         // yt api is ready
+        console.log("API ready");
     });
 }
