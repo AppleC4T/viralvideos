@@ -59,7 +59,7 @@ sealb.addEventListener("click", function(e){
           $("#results").html("");
           $.each(results.items, function(index, item) {
             $.get("tpl/item.html", function(data) {
-				$("#results").append(possres));
+				$("#results").append(possres);
 				var result = possres[Math.floor(Math.random() * possres.length)];
                 $("#result").append(tplawesome(data, [{"title":item.snippet.title, "videoid":item.id.videoId}]));
             });
