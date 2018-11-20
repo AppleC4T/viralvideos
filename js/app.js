@@ -41,6 +41,7 @@ function init() {
 }
 
 var sealb = document.getElementById("seals");
+var possres = [];
 sealb.addEventListener("click", function(e){
        e.preventDefault();
        // prepare the request
@@ -48,7 +49,7 @@ sealb.addEventListener("click", function(e){
             part: "snippet",
             type: "video",
             q: "seal|seals|seal meme|seals meme",
-            maxResults: 3,
+            maxResults: 10,
             order: "relevance",
             publishedAfter: "2007-01-01T00:00:00Z"
        }); 
@@ -58,7 +59,9 @@ sealb.addEventListener("click", function(e){
           $("#results").html("");
           $.each(results.items, function(index, item) {
             $.get("tpl/item.html", function(data) {
-                $("#results").append(tplawesome(data, [{"title":item.snippet.title, "videoid":item.id.videoId}]));
+				$("#results").append(possres));
+				var result = possres[Math.floor(Math.random() * possres.length)];
+                $("#result").append(tplawesome(data, [{"title":item.snippet.title, "videoid":item.id.videoId}]));
             });
           });
           resetVideoHeight();
